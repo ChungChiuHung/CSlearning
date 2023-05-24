@@ -12,6 +12,75 @@ namespace UsingCollections
     {
         static void Main(string[] args)
         {
+            #region Array
+            int[] numbers = new int[10]; // initial the array size
+            for (int i = 0; i < numbers.Length; i++) // define the value of each element
+            {
+                numbers[i] = i + 1;
+            }
+
+            foreach (var item in numbers)
+            {
+                Console.Write(item + " ");
+            }
+
+            Console.WriteLine("\n");
+
+            // Ref Element
+            int[] ref_numbers = new int[10];
+            ref_numbers = numbers;
+
+            ref_numbers[0] = 999;
+
+            foreach (var item in numbers)
+            {
+                Console.Write(item + " ");
+            }
+
+            Console.WriteLine("\n");
+
+            // Copy Element
+            int[] copy_numbers = new int[10];
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                copy_numbers[i] = numbers[i];
+            }
+
+            copy_numbers[0] = 666;
+
+            foreach (var item in numbers)
+            {
+                Console.Write(item + " ");
+            }
+
+            Console.WriteLine("\n");
+
+            Console.WriteLine("numbers HashCode: \t" + numbers.GetHashCode());
+            Console.WriteLine("ref_numbers HashCode: \t" + ref_numbers.GetHashCode());
+            Console.WriteLine("copy_numbers HashCode: \t"+copy_numbers.GetHashCode());
+
+
+            Console.WriteLine("\n");
+
+            // Remove or Resize the Array
+            int[] bufferArray = new int[numbers.Length];  // Create a array with the same size
+
+            for (int i = 0; i < numbers.Length; i++)  // Copy each element in an array
+            {
+                bufferArray[i] = numbers[i];
+            }
+
+            numbers = new int[6];
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                numbers[i] = bufferArray[i];
+            }
+
+            
+            #endregion
+
             #region List<T>
             List<User> objList = new List<User>();
             objList.Add(new User() { Id = 0, Name = "Alex"});
@@ -161,7 +230,9 @@ namespace UsingCollections
 
             #endregion
 
+            #region Dictionary<TKey, TValue>
 
+            #endregion
 
 
 
