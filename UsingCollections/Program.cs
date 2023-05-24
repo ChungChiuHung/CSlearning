@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.Cryptography.X509Certificates;
 
 namespace UsingCollections
 {
@@ -109,6 +106,8 @@ namespace UsingCollections
             User user_1 = new User() { Id = 11, Name = "Frank" };
 
             objList.Add(user_1);
+            var findUserById = objList.Find(x => x.Id == 4);
+            var findNameById = objList.Find(x => x.Id == 5).Name;
 
             objList.Remove(user_1);
             //objList.RemoveAt(1);
@@ -205,8 +204,11 @@ namespace UsingCollections
 
             Console.WriteLine();
             Console.WriteLine("Add A Element At the Top of those elements");
-            linkStrList.AddFirst("00");
-            linkStrList.AddLast("EE");
+            linkStrList.AddFirst("FRONT");
+            linkStrList.AddLast("END");
+
+            
+
             foreach (var item in linkStrList)
             {
                 Console.Write(item + "-");
@@ -215,25 +217,86 @@ namespace UsingCollections
             #endregion
 
             #region HashSet<T>
-            HashSet<User> users = new HashSet<User>();
+            // this class is optimized for performing set operations,
+            // such as determining set membership and generating the 
+            // union and intersection of sets
 
-            users.Add(new User { Id= 100, Name = "Set 01" });
-            users.Add(new User { Id= 101, Name = "Set 02" });
-            users.Add(new User { Id= 102, Name = "Set 03" });
-            users.Add(new User { Id = 103, Name = "Set 04" });
+            // SortedSet<T>
 
+            HashSet<int> set_1 = new HashSet<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9};
+            HashSet<int> set_2 = new HashSet<int>() { 2, 4, 6, 8 };
+            HashSet<int> set_3 = new HashSet<int>() { 1, 3, 5, 7 };
+            HashSet<int> set_4 = new HashSet<int>() { 13, 23, 43, 73 };
 
-            foreach (var item in users)
+            
+            
+            Console.WriteLine(set_2.IsSubsetOf(set_1));
+            Console.WriteLine(set_1.IsSupersetOf(set_2));
+            Console.WriteLine(set_2.IsProperSubsetOf(set_1));
+            Console.WriteLine(set_1.IsProperSupersetOf(set_3));
+
+            //set_1.UnionWith(set_4); // 聯集
+            //set_1.ExceptWith(set_3); // 移除交集元素
+            //set_1.IntersectWith(set_2); // 交集
+
+            foreach (var item in set_1)
             {
-                Console.WriteLine(item.Name);
+                Console.Write(item + " ");
             }
+
+            Console.WriteLine("\n");
 
             #endregion
 
             #region Dictionary<TKey, TValue>
+            // Associative array / maps or dictionaries
+            // an abstract data type that can hold data in (key, value) pairs
+            Dictionary<string, int> memberRank = new Dictionary<string, int>();
+
+            memberRank.Add("Alex", 3);
+            memberRank.Add("Hank", 10);
+            memberRank.Add("Frank", 5);
+            memberRank.Add("Ricky", 7);
+            memberRank.Add("Stacy", 3);
+            memberRank.Add("Miya", 8);
+            memberRank.Add("Mickey", 9);
+
+            // Collection cannot contain duplicate keys.
+            // memberRank.Add("Hank", 13);
+
+            var rank_of_alex = memberRank["Alex"];
+
+            foreach (var item in memberRank)
+            {
+                Console.WriteLine(item.Key + " "+ item.Value);
+            }
+
+            memberRank.Remove("Alex");
+
+            
+
+            Console.ReadLine();
 
             #endregion
 
+            #region SortedList<TKey, TValue>
+            // the keys array is always sorted
+
+            SortedList<int, string> ScoreRanks = new SortedList<int, string>();
+            ScoreRanks.Add(10, "Phinex");
+            ScoreRanks.Add(21, "Drogon");
+            ScoreRanks.Add(34, "Dinosaur");
+            ScoreRanks.Add(78, "Heliena");
+            ScoreRanks.Add(67, "RobotCat");
+            ScoreRanks.Add(13, "Pokymon");
+
+            foreach (var item in ScoreRanks)
+            {
+                Console.Write(item.Key + ": ");
+                Console.WriteLine(item.Value);
+            }
+
+            #endregion
 
 
 
