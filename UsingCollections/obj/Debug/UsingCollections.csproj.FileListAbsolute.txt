@@ -1,0 +1,8 @@
+D:\CodeHere\Ex_Solution_005\UsingCollections\bin\Debug\UsingCollections.exe.config
+D:\CodeHere\Ex_Solution_005\UsingCollections\bin\Debug\UsingCollections.exe
+D:\CodeHere\Ex_Solution_005\UsingCollections\bin\Debug\UsingCollections.pdb
+D:\CodeHere\Ex_Solution_005\UsingCollections\obj\Debug\UsingCollections.csproj.AssemblyReference.cache
+D:\CodeHere\Ex_Solution_005\UsingCollections\obj\Debug\UsingCollections.csproj.SuggestedBindingRedirects.cache
+D:\CodeHere\Ex_Solution_005\UsingCollections\obj\Debug\UsingCollections.csproj.CoreCompileInputs.cache
+D:\CodeHere\Ex_Solution_005\UsingCollections\obj\Debug\UsingCollections.exe
+D:\CodeHere\Ex_Solution_005\UsingCollections\obj\Debug\UsingCollections.pdb

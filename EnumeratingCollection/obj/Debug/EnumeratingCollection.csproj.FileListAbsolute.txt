@@ -1,0 +1,8 @@
+D:\CodeHere\Ex_Solution_005\EnumeratingCollection\bin\Debug\EnumeratingCollection.exe.config
+D:\CodeHere\Ex_Solution_005\EnumeratingCollection\bin\Debug\EnumeratingCollection.exe
+D:\CodeHere\Ex_Solution_005\EnumeratingCollection\bin\Debug\EnumeratingCollection.pdb
+D:\CodeHere\Ex_Solution_005\EnumeratingCollection\obj\Debug\EnumeratingCollection.csproj.AssemblyReference.cache
+D:\CodeHere\Ex_Solution_005\EnumeratingCollection\obj\Debug\EnumeratingCollection.csproj.SuggestedBindingRedirects.cache
+D:\CodeHere\Ex_Solution_005\EnumeratingCollection\obj\Debug\EnumeratingCollection.csproj.CoreCompileInputs.cache
+D:\CodeHere\Ex_Solution_005\EnumeratingCollection\obj\Debug\EnumeratingCollection.exe
+D:\CodeHere\Ex_Solution_005\EnumeratingCollection\obj\Debug\EnumeratingCollection.pdb
