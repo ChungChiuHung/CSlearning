@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DelgateAndEvent_ex06
+namespace DelegateAndEvent_ex06
 {
-   
+
     public class Object1
     {
         public event EventHandler<WaterData> OnWaterData;
