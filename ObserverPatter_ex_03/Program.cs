@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ObserverPatter_ex_03
+namespace ObserverPattern_ex_03
 {
     internal class Program
     {

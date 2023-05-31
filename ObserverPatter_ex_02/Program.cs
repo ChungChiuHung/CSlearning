@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ObserverPatter_ex_02
+namespace ObserverPattern_ex_02
 {
     /*
      * Define the interfaces: 
@@ -13,7 +9,7 @@ namespace ObserverPatter_ex_02
      *          attaching, detaching, and notifying observers. Also, 
      *          create the IObserver interface that defines the Update method.
      */
-    
+
     public interface IObserver<T>
     {
         void Update(T data);
