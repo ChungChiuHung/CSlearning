@@ -153,8 +153,8 @@ namespace ObserverPattern_ex05
             monitor.AddDevice(dev1);
             monitor.AddDevice(dev2);
 
-            //IDisposable subscription = monitor.Subscriber(logger);
-            //subscription.Dispose();
+            IDisposable subscription = monitor.Subscribe(logger);
+            subscription.Dispose();
 
             monitor.AddDevice(dev3);
             monitor.AddDevice(dev4);

@@ -75,6 +75,7 @@ namespace EventAndEventHandler_ex01
         public DeviceDisplay(DeviceMonitor monitor)
         {
             monitor.Your_Event_Name += Monitor_Your_Event_Name;   
+            //Button1.Click += .....
         }
 
         private void Monitor_Your_Event_Name(object sender, Your_Event_Args e)
