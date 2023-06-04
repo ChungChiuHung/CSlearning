@@ -2,7 +2,7 @@
 
 namespace ObserverPattern
 {
-    public class TemperatureDisplay : IObservable
+    public class TemperatureDisplay : IObserver
     {
         public void Update(int temperature)
         {
