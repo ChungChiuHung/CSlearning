@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
-using System.Security.Policy;
 using System.Threading;
 
 namespace ObserverPattern_ex04
@@ -124,10 +122,17 @@ namespace ObserverPattern_ex04
     {
         static void Main(string[] args)
         {
-            WeatherSation weatherStation = new WeatherSation();
+
+            // Observable
+            WeatherSation weatherStation = new WeatherSation(); 
+
+            // Observer
             TemperatureDisplay display = new TemperatureDisplay();
+
+            // Observer
             Fan fan = new Fan();
 
+            // Subscribe Change
             display.Subscribe(weatherStation);
             fan.Subscribe(weatherStation);
 
