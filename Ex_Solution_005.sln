@@ -45,6 +45,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceHttpServer", "DeviceH
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbHttpServer", "DbHttpServer\DbHttpServer.csproj", "{87AE783D-34CA-4A5F-B439-26FDC8651597}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleServerCommon", "SimpleServerCommon\SimpleServerCommon.csproj", "{D4A491F9-B267-4120-A692-12649215E841}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{87AE783D-34CA-4A5F-B439-26FDC8651597}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87AE783D-34CA-4A5F-B439-26FDC8651597}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87AE783D-34CA-4A5F-B439-26FDC8651597}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4A491F9-B267-4120-A692-12649215E841}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4A491F9-B267-4120-A692-12649215E841}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4A491F9-B267-4120-A692-12649215E841}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4A491F9-B267-4120-A692-12649215E841}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

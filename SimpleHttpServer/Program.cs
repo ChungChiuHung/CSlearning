@@ -11,9 +11,7 @@ namespace SimpleHttpServer
 
     internal partial class Program
     {
-        static int currentId = 100; // Initial Id value for the default user
         static List<User> users = new List<User>();
-        static Dictionary<string, string> authenticatedUsers = new Dictionary<string, string>();
 
         static void Main(string[] args)
         {
@@ -22,7 +20,7 @@ namespace SimpleHttpServer
 
             string[] prefixes = { "http://localhost:8080/" };
             var users = GenerateDemoUsers();
-            LoginManager.GetUsers(GenerateDemoUsers());
+            LoginManager.GetUsers(users);
             HttpServer server = new HttpServer(prefixes, users);
 
             server.Start();
