@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Fan.cs" />
-    <Compile Include="IObservable.cs" />
+    <Compile Include="IObserver.cs" />
     <Compile Include="ISubject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

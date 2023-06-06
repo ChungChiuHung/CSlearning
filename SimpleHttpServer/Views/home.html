@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>API List</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+        }
+
+        h1 {
+            color: #333333;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>API List</h1>
+        <ul>
+            <li><a href="/api/users">GET /api/users</a> - Get all users</li>
+            <li><a href="/api/users" onclick="event.preventDefault(); document.getElementById('postForm').submit();">POST /api/users</a> - Add a new user</li>
+        </ul>
+        <form id="postForm" action="/api/users" method="POST" style="display: none;"></form>
+    </div>
+</body>
+</html>

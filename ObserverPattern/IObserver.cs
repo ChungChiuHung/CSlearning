@@ -1,6 +1,6 @@
 ﻿namespace ObserverPattern
 {
-    public interface IObservable
+    public interface IObserver
     {
         void Update(int temperature);
     }

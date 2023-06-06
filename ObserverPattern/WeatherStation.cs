@@ -5,11 +5,11 @@ namespace ObserverPattern
     public class WeatherStation : ISubject
     {
         private int temperature;
-        private List<IObservable> observers;
+        private List<IObserver> observers;
 
         public WeatherStation()
         {
-            observers = new List<IObservable>();
+            observers = new List<IObserver>();
         }
 
         public int Temperature
@@ -22,12 +22,12 @@ namespace ObserverPattern
             } 
         }
 
-        public void Attach(IObservable observer)
+        public void Attach(IObserver observer)
         {
             observers.Add(observer);
         }
 
-        public void Detach(IObservable observer)
+        public void Detach(IObserver observer)
         {
             observers.Remove(observer);
         }

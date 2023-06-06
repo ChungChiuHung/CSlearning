@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Policy;
 using System.Threading;
 
 namespace ObserverPattern_ex04
@@ -33,7 +32,7 @@ namespace ObserverPattern_ex04
                 observers.Add(observer);
             }
 
-            return new Unsubscriber(observers, observer);
+            return new Unsubscribe(observers, observer);
         }
 
         private void NotifyObservers()
@@ -44,12 +43,12 @@ namespace ObserverPattern_ex04
             }
         }
 
-        private class Unsubscriber : IDisposable
+        private class Unsubscribe : IDisposable
         {
             private List<IObserver<int>> observers;
             private IObserver<int> observer;
 
-            public Unsubscriber(List<IObserver<int>> observers, IObserver<int> observer)
+            public Unsubscribe(List<IObserver<int>> observers, IObserver<int> observer)
             {
                 this.observers = observers;
                 this.observer = observer;
@@ -86,8 +85,8 @@ namespace ObserverPattern_ex04
 
         public void OnNext(int value)
         {
-            Console.WriteLine("Temperature Display : ");
-            Console.WriteLine($"Current Temperature is {value}");
+            Console.Write("Temperature Display : ");
+            Console.Write($"Current Temperature is {value}\n");
         }
     }
 
@@ -123,26 +122,33 @@ namespace ObserverPattern_ex04
     {
         static void Main(string[] args)
         {
-            WeatherSation weatherStation = new WeatherSation();
+
+            // Observable
+            WeatherSation weatherStation = new WeatherSation(); 
+
+            // Observer
             TemperatureDisplay display = new TemperatureDisplay();
+
+            // Observer
             Fan fan = new Fan();
 
-            weatherStation.Subscribe(display);
-            weatherStation.Subscribe(fan);
+            // Subscribe Change
+            display.Subscribe(weatherStation);
+            fan.Subscribe(weatherStation);
 
+
+            Random randNumb = new Random();
             int temp = 20;
 
-            for (int i = 0; i < 6; i++)
+
+
+            while(true) 
             {
-                temp += 1;
+                temp = randNumb.Next(20,32);
                 weatherStation.Temperature = temp;
                 Thread.Sleep(1000);
                 Console.Clear();
             }
-
-
-
-            Console.ReadLine();
 
         }
     }
