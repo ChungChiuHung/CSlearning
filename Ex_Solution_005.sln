@@ -37,8 +37,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObserverPattern_ex05", "Obs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventAndEventHandler_ex01", "EventAndEventHandler_ex01\EventAndEventHandler_ex01.csproj", "{93717302-AE0C-4A59-8245-D37A80453A5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{D1AF3E92-6CFF-41E7-AB3B-2D7A4E58390E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleHttpServer", "SimpleHttpServer\SimpleHttpServer.csproj", "{0ADFFE84-E565-47C9-AD8A-3F761D65BF20}"
 EndProject
 Global
@@ -103,10 +101,6 @@ Global
 		{93717302-AE0C-4A59-8245-D37A80453A5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93717302-AE0C-4A59-8245-D37A80453A5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93717302-AE0C-4A59-8245-D37A80453A5A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D1AF3E92-6CFF-41E7-AB3B-2D7A4E58390E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D1AF3E92-6CFF-41E7-AB3B-2D7A4E58390E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D1AF3E92-6CFF-41E7-AB3B-2D7A4E58390E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D1AF3E92-6CFF-41E7-AB3B-2D7A4E58390E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0ADFFE84-E565-47C9-AD8A-3F761D65BF20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0ADFFE84-E565-47C9-AD8A-3F761D65BF20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0ADFFE84-E565-47C9-AD8A-3F761D65BF20}.Release|Any CPU.ActiveCfg = Release|Any CPU
