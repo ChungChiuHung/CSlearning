@@ -58,6 +58,7 @@
   <ItemGroup>
     <Content Include="Views\home.html" />
     <Content Include="Views\index.html" />
+    <Content Include="Views\login.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

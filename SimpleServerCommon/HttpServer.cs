@@ -31,6 +31,7 @@ namespace SimpleServerCommon
             htmlPaths = new Dictionary<string, string>();
             htmlPaths.Add("/", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "Views", "index.html"));
             htmlPaths.Add("/home", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "Views", "home.html"));
+            htmlPaths.Add("/login", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "Views", "login.html"));
 
 
         }
@@ -71,40 +72,77 @@ namespace SimpleServerCommon
             string method = request.HttpMethod;
             string url = request.Url.AbsolutePath;
 
-
             if (htmlPaths.ContainsKey(url))
             {
                 ServerIndexHtml(context, htmlPaths[url]);
             }
-            else if (url == "/api/users" && method == "GET")
-            {
-                ServerUserList(response);
-            }
-            else if (url == "/api/users" && method == "POST")
-            {
-                CreateUser(request, response);
-            }
-            else if (url == "/api/records" && method == "GET")
-            {
-                GetRecords(response);
-            }
-            else if (url == "/api/records" && method == "POST")
-            {
-                CreateNewRecord(request, response);
-            }
-            else if (url == "/api/login" && method == "POST")
-            {
-                Login(request, response);
-            }
             else
             {
-                WriteResponse(response, "Not Found", "text/plain", HttpStatusCode.NotFound);
+                switch (url)
+                {
+                    case "/api/users":
+                        if (method == "GET")
+                        {
+                            if (ValidateAuthToken(request))
+                            {
+                                ServerUserList(response);
+                            }
+                            else
+                            {
+                                Unauthorized(response);
+                            }
+                        }
+                        else if (method == "POST")
+                        {
+                            if (ValidateAuthToken(request))
+                            {
+                                CreateUser(request, response);
+                            }
+                            else
+                            {
+                                Unauthorized(response);
+                            }
+                        }
+                        break;
+                    case "/api/records":
+                        if (method == "GET")
+                        {
+                            if (ValidateAuthToken(request))
+                            {
+                                GetRecords(response);
+                            }
+                            else
+                            {
+                                Unauthorized(response);
+                            }
+                        }
+                        else if (method == "POST")
+                        {
+                            if (ValidateAuthToken(request))
+                            {
+                                CreateNewRecord(request, response);
+                            }
+                            else
+                            {
+                                Unauthorized(response);
+                            }
+                        }
+                        break;
+                    case "/api/login":
+                        if (method == "POST")
+                        {
+                            Login(request, response);
+                        }
+                        break;
+                    default:
+                        NotFound(response);
+                        break;
+                }
             }
 
             response.Close();
-
-
         }
+
 
         public static string Login(HttpListenerRequest request, HttpListenerResponse response)
         {
@@ -160,6 +198,21 @@ namespace SimpleServerCommon
         }
 
 
+        private bool ValidateAuthToken(HttpListenerRequest request)
+        {
+            string authToken = request.Headers["Authorization"];
+            if(!string.IsNullOrEmpty(authToken))
+            {
+                string[] tokenParts = authToken.Split(' ');
+                if(tokenParts.Length == 2 && tokenParts[0] == "Bearer")
+                {
+                    string token = tokenParts[1];
+                    return LoginManager.ValidateAuthToken(token);
+                }
+            }
+            return false;
+        }
+
         private void UserLogin(HttpListenerRequest request, HttpListenerResponse response)
         {
             // Login endpoint
@@ -211,18 +264,26 @@ namespace SimpleServerCommon
             string requestBody = new StreamReader(request.InputStream).ReadToEnd();
             User newUser = Newtonsoft.Json.JsonConvert.DeserializeObject<User>(requestBody);
 
-            // Generate salt and hash the password
-            string salt = GenerateSalt();
-            string hashedPassword = LoginManager.GenerateHashedPassword(newUser.Password, salt);
+            if(newUser!=null)
+            {
+                // Generate salt and hash the passwords
+                string salt = GenerateSalt();
+                string hashedPassword = LoginManager.GenerateHashedPassword(newUser.Password, salt);
 
-            newUser.Salt = salt;
-            newUser.HashedPassword = hashedPassword;
-            newUser.Id = LoginManager.GetNextUserId();
+                newUser.Salt = salt;
+                newUser.HashedPassword = hashedPassword;
+                newUser.Id = LoginManager.GetNextUserId();
 
-            users.Add(newUser);
+                users.Add(newUser);
 
-            string responseBody = Newtonsoft.Json.JsonConvert.SerializeObject(newUser);
-            WriteResponse(response, responseBody, "application/json", HttpStatusCode.Created);
+                string responseBody = Newtonsoft.Json.JsonConvert.SerializeObject(newUser);
+                WriteResponse(response, responseBody, "application/json", HttpStatusCode.Created);
+            }
+            else
+            {
+                WriteResponse(response, requestBody, "application/json", HttpStatusCode.BadRequest);
+            }
+            
         }
 
         private string GenerateSalt()
@@ -271,14 +332,23 @@ namespace SimpleServerCommon
 
         private void ServerNotFound(HttpListenerContext context)
         {
-            context.Response.StatusCode = 404;
-            context.Response.Close();
+            NotFound(context.Response);
         }
 
         private void ServerBadRequest(HttpListenerContext context)
         {
             context.Response.StatusCode = 400;
             context.Response.Close();
+        }
+
+        private void Unauthorized(HttpListenerResponse response)
+        {
+            WriteResponse(response, "Unauthorized", "text/plain", HttpStatusCode.Unauthorized);
+        }
+
+        private void NotFound(HttpListenerResponse response)
+        {
+            WriteResponse(response, "Not Found", "text/plain", HttpStatusCode.NotFound);
         }
     }
 
